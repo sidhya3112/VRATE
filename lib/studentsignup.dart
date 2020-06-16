@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'welcome.dart';
 
 class StudentSignUp extends StatefulWidget {
@@ -14,11 +15,11 @@ class _StudentSignUpState extends State<StudentSignUp> {
   static const TextStyle Black20Style = TextStyle(
       fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold);
 
+  List<String> _batch = ['Batch 1', 'Batch 2', 'Batch 3', 'Batch 4', 'Batch 5','Batch 6'];
+  String _selectedBatch;
+
   List<String> _branch = ['CS', 'IT', 'EXTC', 'Electronics', 'Electrical','Mechanical','Civil','Production', 'Textile'];
   String _selectedBranch;
-
-  List<String> _batch = ['Batch 1', 'Batch 2', 'Batch 3', 'Batch 4', 'Batch 5', 'Batch 6'];
-  String _selectedBatch;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 40.0, left: 30, right: 20),
+                padding: EdgeInsets.only(top: 40.0, left: 80),
                 child: Image.asset(
                   "images/signup.jpg",
                 ),
@@ -51,36 +52,17 @@ class _StudentSignUpState extends State<StudentSignUp> {
                       style: GoogleFonts.alice(textStyle: Black20Style),
                     ),
                   ),
-                  SizedBox(height: 155),
-                  Container(
-                    width: double.infinity,
-                    height: 398,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black12,
-                            offset: Offset(0.0, 15.0),
-                            blurRadius: 15.0),
-                        BoxShadow(
-                            color: Colors.black12,
-                            offset: Offset(0.0, -10.0),
-                            blurRadius: 10.0),
-                      ],
-                    ),
-                    child: Padding(
-                      padding:
-                      EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                  SizedBox(height: 95),
+                  Padding(
+                    padding:
+                    EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                    child: Form(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
                             "Student SignUp",
                             style: GoogleFonts.alice(textStyle: Black20Style),
-                          ),
-                          SizedBox(
-                            height: 5.0,
                           ),
                           TextFormField(
                             decoration: InputDecoration(
@@ -131,50 +113,51 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                   color: Colors.black26, fontSize: 16.0),
                             ),
                           ),
-                              DropdownButtonFormField(
-                                decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.book,
-                                      size: 22.0,
-                                      color: Colors.black26),
-                                ),
-                                hint: Text('Branch                                       ',
-                                  style: TextStyle(
-                                      color: Colors.black26, fontSize: 16.0), ),
-                                value: _selectedBranch,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    _selectedBranch = newValue;
-                                  });
-                                },
-                                items: _branch.map((subject) {
-                                  return DropdownMenuItem(
-                                    child: new Text(subject),
-                                    value: subject,
-                                  );
-                                }).toList(),
-                              ),
-                              DropdownButtonFormField(
-                                decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.people,
-                                      size: 22.0,
-                                      color: Colors.black26),
-                                ),
-                                hint: Text('Batch                                         ',
-                                  style: TextStyle(
-                                      color: Colors.black26, fontSize: 16.0), ),
-                                value: _selectedBatch,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    _selectedBatch = newValue;
-                                  });
-                                },
-                                items: _batch.map((subject) {
-                                  return DropdownMenuItem(
-                                    child: new Text(subject),
-                                    value: subject,
-                                  );
-                                }).toList(),
-                              ),
+                          DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              prefixIcon:  Icon(Icons.book,
+                                  size: 22.0,
+                                  color: Colors.black26),
+                            ),
+                            hint: Text('Branch',
+                              style: TextStyle(
+                                  color: Colors.black26, fontSize: 16.0), ),
+                            value: _selectedBranch,
+                            onChanged: (newValue) {
+                              setState(() {
+                                _selectedBranch = newValue;
+                              });
+                            },
+                            items: _branch.map((subject) {
+                              return DropdownMenuItem(
+                                child: new Text(subject),
+                                value: subject,
+                              );
+                            }).toList(),
+                          ),
+                          DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              prefixIcon:  Icon(Icons.people,
+                                  size: 22.0,
+                                  color: Colors.black26),
+                            ),
+                            hint: Text('Batch',
+                              style: TextStyle(
+                                  color: Colors.black26, fontSize: 16.0), ),
+                            value: _selectedBatch,
+                            onChanged: (newValue) {
+                              setState(() {
+                                _selectedBatch = newValue;
+                              });
+                            },
+                            items: _batch.map((subject) {
+                              return DropdownMenuItem(
+                                child: new Text(subject),
+                                value: subject,
+                              );
+                            }).toList(),
+                          ),
+
                         ],
                       ),
                     ),

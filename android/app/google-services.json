@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "447598744699",
+    "firebase_url": "https://vrate-634da.firebaseio.com",
+    "project_id": "vrate-634da",
+    "storage_bucket": "vrate-634da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447598744699:android:1bee50ded2ff9c9bfbfede",
+        "android_client_info": {
+          "package_name": "we.help.others.vrate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "447598744699-7t8nvdj4unt950sdupnaltflpniglgau.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "we.help.others.vrate",
+            "certificate_hash": "2bd8f0a308b82d0467ba5d00b2163057b8b80832"
+          }
+        },
+        {
+          "client_id": "447598744699-t8a3hf988enuir0dmo1qa8hs2gllqj9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3PDcNpsuF6nwoRcEuWPR0lmBld61qVqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "447598744699-t8a3hf988enuir0dmo1qa8hs2gllqj9f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

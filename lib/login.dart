@@ -3,20 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vrate/studentsignup.dart';
 import 'package:vrate/teachersignup.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'welcome.dart';
 
-import 'timetable.dart';
-
-final FirebaseAuth mAuth = FirebaseAuth.instance;
 
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
-}
-
-enum FormType{
-  login,
-  signup
 }
 
 class _LoginState extends State<Login> {
@@ -57,39 +49,6 @@ class _LoginState extends State<Login> {
   static const TextStyle Blue15Style = TextStyle(
       fontSize: 15.0, color: Colors.blue, fontWeight: FontWeight.bold);
 
-  final formKey = new GlobalKey<FormState>();
-
-  String _email;
-  String _password;
-  FormType _formType = FormType.login;
-
-  bool validateAndSave() {
-    final form = formKey.currentState;
-    if(form.validate()){
-      form.save();
-      return true;
-    }
-    return false;
-  }
-
-  void validateAndSubmit() async {
-    if(validateAndSave()){
-      try {
-        if(_formType == FormType.login) {
-          FirebaseUser user = (await FirebaseAuth.instance
-              .signInWithEmailAndPassword(
-              email: _email, password: _password)) as FirebaseUser;
-          print('Signed in: ${user.uid}');
-        }else{
-          FirebaseUser user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
-          print('Registered User: ${user.uid}');
-        }
-      }
-      catch (e) {
-        print('Error: $e');
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,8 +100,6 @@ class _LoginState extends State<Login> {
                     child: Padding(
                       padding:
                           EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-                      child: Form(
-                        key: formKey,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -164,8 +121,6 @@ class _LoginState extends State<Login> {
                                 labelStyle: TextStyle(
                                     color: Colors.black26, fontSize: 15.0),
                               ),
-                              validator: (value) => value.isEmpty ? 'Fill Email.' : null,
-                              onSaved: (value) => _email = value,
                             ),
                             TextFormField(
                               obscureText: true,
@@ -179,8 +134,6 @@ class _LoginState extends State<Login> {
                                 labelStyle: TextStyle(
                                     color: Colors.black26, fontSize: 15.0),
                               ),
-                                validator: (value) => value.isEmpty ? 'Fill Password' : null,
-                              onSaved: (value) => _password = value,
                             ),
                             SizedBox(height: 10.0),
                             Row(
@@ -195,7 +148,6 @@ class _LoginState extends State<Login> {
                             ),
                           ],
                         ),
-                      ),
                     ),
                   ),
                   SizedBox(height: 30.0),
@@ -225,7 +177,7 @@ class _LoginState extends State<Login> {
                               context,
                               new MaterialPageRoute(
                                   builder: (context) =>
-                                  new TimeTable()));
+                                  new WelcomePage()));
                         },
                         child: Container(
                           width: 130.0,
@@ -245,7 +197,6 @@ class _LoginState extends State<Login> {
                           child: Material(
                             color: Colors.transparent,
                             child: InkWell(
-                              onTap: validateAndSubmit,
                               child: Center(
                                 child: Text(
                                   "SIGNIN",
@@ -269,9 +220,6 @@ class _LoginState extends State<Login> {
                       ),
                       InkWell(
                         onTap: () {
-                          setState(() {
-                            _formType = FormType.signup;
-                          });
                           showDialog<void>(
                             context: context,
                             barrierDismissible: false, // user must tap button!

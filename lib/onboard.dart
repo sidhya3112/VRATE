@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:liquid_swipe/Helpers/Helpers.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'timetable.dart';
+import 'welcome.dart';
 import 'login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -44,7 +44,7 @@ class _OnBoardState extends State<OnBoard> {
         .currentUser()
         .then((currentUser) => {
               if (currentUser == null)
-                {Navigator.pushReplacementNamed(context, "/login")}
+                {Navigator.pushReplacementNamed(context, "/onboard")}
               else
                 {
                   Firestore.instance
@@ -55,7 +55,7 @@ class _OnBoardState extends State<OnBoard> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => TimeTable())))
+                                  builder: (context) => WelcomePage())))
                       .catchError((err) => print(err))
                 }
             })

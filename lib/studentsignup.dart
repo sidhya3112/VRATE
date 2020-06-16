@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'timetable.dart';
+import 'welcome.dart';
 
 class StudentSignUp extends StatefulWidget {
   @override
@@ -83,7 +82,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                           SizedBox(
                             height: 5.0,
                           ),
-                          TextField(
+                          TextFormField(
                             decoration: InputDecoration(
                               prefixIcon: Icon(
                                 Icons.person,
@@ -95,7 +94,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                   color: Colors.black26, fontSize: 16.0),
                             ),
                           ),
-                          TextField(
+                          TextFormField(
                             decoration: InputDecoration(
                               prefixIcon: Icon(
                                 Icons.person_pin,
@@ -107,7 +106,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                   color: Colors.black26, fontSize: 16.0),
                             ),
                           ),
-                          TextField(
+                          TextFormField(
                             decoration: InputDecoration(
                               prefixIcon: Icon(
                                 Icons.phone,
@@ -119,7 +118,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                   color: Colors.black26, fontSize: 16.0),
                             ),
                           ),
-                          TextField(
+                          TextFormField(
                             obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(
@@ -132,15 +131,12 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                   color: Colors.black26, fontSize: 16.0),
                             ),
                           ),
-                          SizedBox(height: 5.0),
-                          Row(
-                            children: <Widget>[
-                              SizedBox(width: 12.0),
-                              Icon(Icons.book,
-                                  size: 22.0,
-                                  color: Colors.black26),
-                              SizedBox(width: 9.0),
-                              DropdownButton(
+                              DropdownButtonFormField(
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.book,
+                                      size: 22.0,
+                                      color: Colors.black26),
+                                ),
                                 hint: Text('Branch                                       ',
                                   style: TextStyle(
                                       color: Colors.black26, fontSize: 16.0), ),
@@ -157,17 +153,12 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                   );
                                 }).toList(),
                               ),
-                            ],
-                          ),
-
-                          Row(
-                            children: <Widget>[
-                              SizedBox(width: 12.0),
-                              Icon(Icons.people,
-                                  size: 22.0,
-                                  color: Colors.black26),
-                              SizedBox(width: 8.0),
-                              DropdownButton(
+                              DropdownButtonFormField(
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.people,
+                                      size: 22.0,
+                                      color: Colors.black26),
+                                ),
                                 hint: Text('Batch                                         ',
                                   style: TextStyle(
                                       color: Colors.black26, fontSize: 16.0), ),
@@ -184,8 +175,6 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                   );
                                 }).toList(),
                               ),
-                            ],
-                          ),
                         ],
                       ),
                     ),
@@ -215,7 +204,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                 context,
                                 new MaterialPageRoute(
                                     builder: (context) =>
-                                    new TimeTable()));
+                                    new WelcomePage()));
                           },
                           child: Center(
                             child: Text(

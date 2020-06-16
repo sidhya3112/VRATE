@@ -14,11 +14,28 @@ class AuthService {
       String subject,
       String batch,
       String branch) async {
-
+    final currentUser = await _firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    //Update username
+    var userUpdateInfo = UserUpdateInfo();
+    userUpdateInfo.displayName = name;
+    await currentUser.updateProfile(userUpdateInfo);
+    await currentUser.reload();
+    return currentUser.uid;
   }
 
-//SignIn
+  //SignIn
+  Future<String> signInWithEmailAndPassword(
+      String email, String password) async {
+    return (await _firebaseAuth.signInWithEmailAndPassword(
+            email: email, password: password))
+        .uid;
+  }
 
-//SignOut
-
+  //SignOut
+  signOut() {
+    return _firebaseAuth.signOut();
+  }
 }

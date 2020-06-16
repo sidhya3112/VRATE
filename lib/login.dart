@@ -5,7 +5,6 @@ import 'package:vrate/studentsignup.dart';
 import 'package:vrate/teachersignup.dart';
 import 'welcome.dart';
 
-
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -48,7 +47,6 @@ class _LoginState extends State<Login> {
 
   static const TextStyle Blue15Style = TextStyle(
       fontSize: 15.0, color: Colors.blue, fontWeight: FontWeight.bold);
-
 
   @override
   Widget build(BuildContext context) {
@@ -100,54 +98,54 @@ class _LoginState extends State<Login> {
                     child: Padding(
                       padding:
                           EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Login',
-                              style: GoogleFonts.alice(textStyle: Black20Style),
-                            ),
-                            SizedBox(
-                              height: 10.0,
-                            ),
-                            TextFormField(
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  Icons.person,
-                                  size: 22.0,
-                                  color: Colors.black26,
-                                ),
-                                labelText: "Email",
-                                labelStyle: TextStyle(
-                                    color: Colors.black26, fontSize: 15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Login',
+                            style: GoogleFonts.alice(textStyle: Black20Style),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.person,
+                                size: 22.0,
+                                color: Colors.black26,
                               ),
+                              labelText: "Email",
+                              labelStyle: TextStyle(
+                                  color: Colors.black26, fontSize: 15.0),
                             ),
-                            TextFormField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  Icons.lock,
-                                  size: 22.0,
-                                  color: Colors.black26,
-                                ),
-                                labelText: "Password",
-                                labelStyle: TextStyle(
-                                    color: Colors.black26, fontSize: 15.0),
+                          ),
+                          TextFormField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                size: 22.0,
+                                color: Colors.black26,
                               ),
+                              labelText: "Password",
+                              labelStyle: TextStyle(
+                                  color: Colors.black26, fontSize: 15.0),
                             ),
-                            SizedBox(height: 10.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: <Widget>[
-                                Text(
-                                  "Forgot Password?",
-                                  style: GoogleFonts.average(
-                                      textStyle: Blue15Style),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: 10.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Text(
+                                "Forgot Password?",
+                                style:
+                                    GoogleFonts.average(textStyle: Blue15Style),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(height: 30.0),
@@ -176,8 +174,7 @@ class _LoginState extends State<Login> {
                           Navigator.push(
                               context,
                               new MaterialPageRoute(
-                                  builder: (context) =>
-                                  new WelcomePage()));
+                                  builder: (context) => new WelcomePage()));
                         },
                         child: Container(
                           width: 130.0,

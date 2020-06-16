@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'welcome.dart';
 
 class StudentSignUp extends StatefulWidget {
@@ -15,10 +14,27 @@ class _StudentSignUpState extends State<StudentSignUp> {
   static const TextStyle Black20Style = TextStyle(
       fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold);
 
-  List<String> _batch = ['Batch 1', 'Batch 2', 'Batch 3', 'Batch 4', 'Batch 5','Batch 6'];
+  List<String> _batch = [
+    'Batch 1',
+    'Batch 2',
+    'Batch 3',
+    'Batch 4',
+    'Batch 5',
+    'Batch 6'
+  ];
   String _selectedBatch;
 
-  List<String> _branch = ['CS', 'IT', 'EXTC', 'Electronics', 'Electrical','Mechanical','Civil','Production', 'Textile'];
+  List<String> _branch = [
+    'CS',
+    'IT',
+    'EXTC',
+    'Electronics',
+    'Electrical',
+    'Mechanical',
+    'Civil',
+    'Production',
+    'Textile'
+  ];
   String _selectedBranch;
 
   @override
@@ -55,7 +71,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                   SizedBox(height: 95),
                   Padding(
                     padding:
-                    EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                        EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                     child: Form(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,13 +131,14 @@ class _StudentSignUpState extends State<StudentSignUp> {
                           ),
                           DropdownButtonFormField(
                             decoration: InputDecoration(
-                              prefixIcon:  Icon(Icons.book,
-                                  size: 22.0,
-                                  color: Colors.black26),
+                              prefixIcon: Icon(Icons.book,
+                                  size: 22.0, color: Colors.black26),
                             ),
-                            hint: Text('Branch',
+                            hint: Text(
+                              'Branch',
                               style: TextStyle(
-                                  color: Colors.black26, fontSize: 16.0), ),
+                                  color: Colors.black26, fontSize: 16.0),
+                            ),
                             value: _selectedBranch,
                             onChanged: (newValue) {
                               setState(() {
@@ -137,13 +154,14 @@ class _StudentSignUpState extends State<StudentSignUp> {
                           ),
                           DropdownButtonFormField(
                             decoration: InputDecoration(
-                              prefixIcon:  Icon(Icons.people,
-                                  size: 22.0,
-                                  color: Colors.black26),
+                              prefixIcon: Icon(Icons.people,
+                                  size: 22.0, color: Colors.black26),
                             ),
-                            hint: Text('Batch',
+                            hint: Text(
+                              'Batch',
                               style: TextStyle(
-                                  color: Colors.black26, fontSize: 16.0), ),
+                                  color: Colors.black26, fontSize: 16.0),
+                            ),
                             value: _selectedBatch,
                             onChanged: (newValue) {
                               setState(() {
@@ -157,7 +175,6 @@ class _StudentSignUpState extends State<StudentSignUp> {
                               );
                             }).toList(),
                           ),
-
                         ],
                       ),
                     ),
@@ -186,14 +203,13 @@ class _StudentSignUpState extends State<StudentSignUp> {
                             Navigator.push(
                                 context,
                                 new MaterialPageRoute(
-                                    builder: (context) =>
-                                    new WelcomePage()));
+                                    builder: (context) => new WelcomePage()));
                           },
                           child: Center(
                             child: Text(
                               "SIGNUP",
                               style:
-                              GoogleFonts.average(textStyle: White16Style),
+                                  GoogleFonts.average(textStyle: White16Style),
                             ),
                           ),
                         ),

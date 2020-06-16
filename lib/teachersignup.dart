@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
+import 'package:vrate/services/auth_service.dart';
 import 'welcome.dart';
 
 class TeacherSignUp extends StatefulWidget {
@@ -15,7 +16,17 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
   static const TextStyle Black20Style = TextStyle(
       fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold);
 
-  List<String> _subject = ['English', 'Maths', 'Physics', 'Chemistry', 'EM','EG','EME','BEE', 'CPP'];
+  List<String> _subject = [
+    'English',
+    'Maths',
+    'Physics',
+    'Chemistry',
+    'EM',
+    'EG',
+    'EME',
+    'BEE',
+    'CPP'
+  ];
   String _selectedSubject;
 
   List _batch;
@@ -72,10 +83,10 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                   ),
                   SizedBox(height: 95),
                   Padding(
-                      padding:
-                      EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-                     child: Form(
-                        key: formKey,
+                    padding:
+                        EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                    child: Form(
+                      key: formKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -132,34 +143,37 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                   color: Colors.black26, fontSize: 16.0),
                             ),
                           ),
-                              DropdownButtonFormField(
-                                decoration: InputDecoration(
-                                  prefixIcon:  Icon(Icons.book,
-                                      size: 22.0,
-                                      color: Colors.black26),
-                                ),
-                                hint: Text('Subjects Teaching',
-                                  style: TextStyle(
-                                      color: Colors.black26, fontSize: 16.0), ),
-                                value: _selectedSubject,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    _selectedSubject = newValue;
-                                  });
-                                },
-                                items: _subject.map((subject) {
-                                  return DropdownMenuItem(
-                                    child: new Text(subject),
-                                    value: subject,
-                                  );
-                                }).toList(),
-                              ),
+                          DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.book,
+                                  size: 22.0, color: Colors.black26),
+                            ),
+                            hint: Text(
+                              'Subjects Teaching',
+                              style: TextStyle(
+                                  color: Colors.black26, fontSize: 16.0),
+                            ),
+                            value: _selectedSubject,
+                            onChanged: (newValue) {
+                              setState(() {
+                                _selectedSubject = newValue;
+                              });
+                            },
+                            items: _subject.map((subject) {
+                              return DropdownMenuItem(
+                                child: new Text(subject),
+                                value: subject,
+                              );
+                            }).toList(),
+                          ),
                           SizedBox(height: 5.0),
                           MultiSelectFormField(
                             fillColor: Colors.white,
                             autovalidate: false,
                             titleText: 'Batches Teaching',
-                            validator: (value)  => value.length==0 ?'Please select one or more options' :null,
+                            validator: (value) => value.length == 0
+                                ? 'Please select one or more options'
+                                : null,
                             dataSource: [
                               {
                                 "display": "Batch 1",
@@ -201,8 +215,8 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                           )
                         ],
                       ),
-                     ),
                     ),
+                  ),
                   SizedBox(height: 18.0),
                   InkWell(
                     child: Container(
@@ -227,14 +241,13 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                             Navigator.push(
                                 context,
                                 new MaterialPageRoute(
-                                    builder: (context) =>
-                                    new WelcomePage()));
+                                    builder: (context) => new WelcomePage()));
                           },
                           child: Center(
                             child: Text(
                               "SIGNUP",
                               style:
-                              GoogleFonts.average(textStyle: White16Style),
+                                  GoogleFonts.average(textStyle: White16Style),
                             ),
                           ),
                         ),

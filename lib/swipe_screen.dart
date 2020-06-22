@@ -3,32 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:liquid_swipe/Helpers/Helpers.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'welcome.dart';
-import 'login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-//OnboardUI
-class HomePage extends StatelessWidget {
+
+class SwipeScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: OnBoard(),
-      routes: {
-        '/login': (context) => Login(),
-      },
-    );
-  }
+  _SwipeScreenState createState() => _SwipeScreenState();
 }
 
-class OnBoard extends StatefulWidget {
-  OnBoard({Key key}) : super(key: key);
-  @override
-  _OnBoardState createState() => _OnBoardState();
-}
-
-class _OnBoardState extends State<OnBoard> {
+class _SwipeScreenState extends State<SwipeScreen> {
   static const TextStyle Black40Style = TextStyle(
       fontSize: 50.0, color: Colors.black, fontWeight: FontWeight.bold);
   static const TextStyle White40Style = TextStyle(
@@ -39,29 +21,6 @@ class _OnBoardState extends State<OnBoard> {
     fontWeight: FontWeight.bold,
   );
 
-  initState() {
-    FirebaseAuth.instance
-        .currentUser()
-        .then((currentUser) => {
-              if (currentUser == null)
-                {Navigator.pushReplacementNamed(context, "/onboard")}
-              else
-                {
-                  Firestore.instance
-                      .collection("users")
-                      .document(currentUser.uid)
-                      .get()
-                      .then((DocumentSnapshot result) =>
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => WelcomePage())))
-                      .catchError((err) => print(err))
-                }
-            })
-        .catchError((err) => print(err));
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +184,7 @@ class _OnBoardState extends State<OnBoard> {
 
   void swipeFinished(int pageNum) {
     if (pageNum == 2) {
-      Navigator.pushNamed(context, '/login');
+      Navigator.of(context).pushNamed('/login');
     }
   }
 }

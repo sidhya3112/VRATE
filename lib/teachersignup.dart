@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
-import 'package:vrate/services/auth_service.dart';
 import 'welcome.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+
 
 class TeacherSignUp extends StatefulWidget {
+
   @override
   _TeacherSignUpState createState() => _TeacherSignUpState();
 }
@@ -16,7 +19,7 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
   static const TextStyle Black20Style = TextStyle(
       fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold);
 
-  List<String> _subject = [
+  List<String> subject = [
     'English',
     'Maths',
     'Physics',
@@ -27,27 +30,68 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
     'BEE',
     'CPP'
   ];
-  String _selectedSubject;
+  String selectedSubject;
 
-  List _batch;
-  String _batchSelected;
-  final formKey = new GlobalKey<FormState>();
-
+  List batch;
+  String batchSelected;
   @override
   void initState() {
     super.initState();
-    _batch = [];
-    _batchSelected = '';
+    batch = [];
+    batchSelected = '';
   }
 
-  _saveForm() {
+  saveForm() {
     var form = formKey.currentState;
     if (form.validate()) {
       form.save();
       setState(() {
-        _batchSelected = _batch.toString();
+        batchSelected = batch.toString();
       });
     }
+  }
+
+
+  final formKey = GlobalKey<FormState>();
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("Users");
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  void registerToFb() {
+    firebaseAuth
+        .createUserWithEmailAndPassword(
+        email: emailController.text, password: passwordController.text)
+        .then((result) {
+      dbRef.child(result.user.uid).set({
+        "email": emailController.text,
+        "name": nameController.text
+      }).then((res) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => WelcomePage()),
+        );
+      });
+    }).catchError((err) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text(err.message),
+              actions: [
+                FlatButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    });
   }
 
   @override
@@ -101,10 +145,17 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                 size: 22.0,
                                 color: Colors.black26,
                               ),
-                              labelText: "Name",
-                              labelStyle: TextStyle(
+                              hintText: "Name",
+                              hintStyle: TextStyle(
                                   color: Colors.black26, fontSize: 16.0),
                             ),
+                            controller: nameController,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter name';
+                              }
+                              return null;
+                            },
                           ),
                           TextFormField(
                             decoration: InputDecoration(
@@ -113,10 +164,17 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                 size: 22.0,
                                 color: Colors.black26,
                               ),
-                              labelText: "ID No.",
-                              labelStyle: TextStyle(
+                              hintText: "Email ID",
+                              hintStyle: TextStyle(
                                   color: Colors.black26, fontSize: 16.0),
                             ),
+                            controller: emailController,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter email id';
+                              }
+                              return null;
+                            },
                           ),
                           TextFormField(
                             decoration: InputDecoration(
@@ -125,10 +183,18 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                 size: 22.0,
                                 color: Colors.black26,
                               ),
-                              labelText: "Phone No.",
-                              labelStyle: TextStyle(
+                              hintText: "Phone No.",
+                              hintStyle: TextStyle(
                                   color: Colors.black26, fontSize: 16.0),
                             ),
+                            keyboardType: TextInputType.number,
+                            controller: phoneController,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter phone no.';
+                              }
+                              return null;
+                            },
                           ),
                           TextFormField(
                             obscureText: true,
@@ -138,10 +204,17 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                 size: 22.0,
                                 color: Colors.black26,
                               ),
-                              labelText: "Password",
-                              labelStyle: TextStyle(
+                              hintText: "Password",
+                              hintStyle: TextStyle(
                                   color: Colors.black26, fontSize: 16.0),
                             ),
+                            controller: passwordController,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter password';
+                              }
+                              return null;
+                            },
                           ),
                           DropdownButtonFormField(
                             decoration: InputDecoration(
@@ -153,20 +226,20 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                               style: TextStyle(
                                   color: Colors.black26, fontSize: 16.0),
                             ),
-                            value: _selectedSubject,
+                            value: selectedSubject,
                             onChanged: (newValue) {
                               setState(() {
-                                _selectedSubject = newValue;
+                                selectedSubject = newValue;
                               });
                             },
-                            items: _subject.map((subject) {
+                            validator: (value) => value == null ? 'Please select subject' : null,
+                            items: subject.map((subject) {
                               return DropdownMenuItem(
                                 child: new Text(subject),
                                 value: subject,
                               );
                             }).toList(),
                           ),
-                          SizedBox(height: 5.0),
                           MultiSelectFormField(
                             fillColor: Colors.white,
                             autovalidate: false,
@@ -205,11 +278,11 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                             okButtonLabel: 'OK',
                             cancelButtonLabel: 'CANCEL',
                             // required: true,
-                            initialValue: _batch,
+                            initialValue: batch,
                             onSaved: (value) {
                               if (value == null) return;
                               setState(() {
-                                _batch = value;
+                                batch = value;
                               });
                             },
                           )
@@ -238,10 +311,9 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                new MaterialPageRoute(
-                                    builder: (context) => new WelcomePage()));
+                            if (formKey.currentState.validate()) {
+                              registerToFb();
+                            }
                           },
                           child: Center(
                             child: Text(

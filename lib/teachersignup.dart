@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
-import 'welcome.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
-
+import 'teacher_welcome.dart';
 
 class TeacherSignUp extends StatefulWidget {
 
@@ -53,55 +50,6 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
 
 
   final formKey = GlobalKey<FormState>();
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("Users");
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
-  void registerToFb() {
-    firebaseAuth
-        .createUserWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text)
-        .then((result) {
-      dbRef.child(result.user.uid).set({
-        "email": emailController.text,
-        "name": nameController.text
-      }).then((res) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => WelcomePage()),
-        );
-      });
-    }).catchError((err) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Error"),
-              content: Text(err.message),
-              actions: [
-                FlatButton(
-                  child: Text("Ok"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            );
-          });
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    phoneController.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -158,13 +106,6 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                               hintStyle: TextStyle(
                                   color: Colors.black26, fontSize: 16.0),
                             ),
-                            controller: nameController,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Please enter name';
-                              }
-                              return null;
-                            },
                           ),
                           TextFormField(
                             decoration: InputDecoration(
@@ -177,13 +118,6 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                               hintStyle: TextStyle(
                                   color: Colors.black26, fontSize: 16.0),
                             ),
-                            controller: emailController,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Please enter email id';
-                              }
-                              return null;
-                            },
                           ),
                           TextFormField(
                             decoration: InputDecoration(
@@ -197,13 +131,6 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                   color: Colors.black26, fontSize: 16.0),
                             ),
                             keyboardType: TextInputType.number,
-                            controller: phoneController,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Please enter phone no.';
-                              }
-                              return null;
-                            },
                           ),
                           TextFormField(
                             obscureText: true,
@@ -217,13 +144,6 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                               hintStyle: TextStyle(
                                   color: Colors.black26, fontSize: 16.0),
                             ),
-                            controller: passwordController,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Please enter password';
-                              }
-                              return null;
-                            },
                           ),
                           DropdownButtonFormField(
                             decoration: InputDecoration(
@@ -320,9 +240,9 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            if (formKey.currentState.validate()) {
-                              registerToFb();
-                            }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => TeacherWelcomePage()));
                           },
                           child: Center(
                             child: Text(

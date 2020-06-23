@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vrate/student_welcome.dart';
 import 'package:vrate/studentsignup.dart';
 import 'package:vrate/teachersignup.dart';
-import 'welcome.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
   static const TextStyle Blue15Style = TextStyle(
       fontSize: 15.0, color: Colors.blue, fontWeight: FontWeight.bold);
 
-
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +101,8 @@ class _LoginState extends State<Login> {
                     child: Padding(
                       padding:
                           EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                      child: Form(
+                        key: formKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -149,6 +151,7 @@ class _LoginState extends State<Login> {
                           ),
                         ],
                       ),
+                      ),
                     ),
                   ),
                   SizedBox(height: 30.0),
@@ -173,12 +176,7 @@ class _LoginState extends State<Login> {
                         ],
                       ),
                       InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              new MaterialPageRoute(
-                                  builder: (context) => new WelcomePage()));
-                        },
+                        onTap: () {},
                         child: Container(
                           width: 130.0,
                           height: 44.0,
@@ -197,6 +195,13 @@ class _LoginState extends State<Login> {
                           child: Material(
                             color: Colors.transparent,
                             child: InkWell(
+                              onTap: (){
+                                Navigator.push(
+                                    context,
+                                    new MaterialPageRoute(
+                                        builder: (context) =>
+                                        new StudentWelcomePage()));
+                              },
                               child: Center(
                                 child: Text(
                                   "SIGNIN",

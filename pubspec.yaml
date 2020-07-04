@@ -32,6 +32,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  smooth_star_rating: 1.1.1
   liquid_swipe: ^1.4.3
   google_fonts: ^1.1.0
   dropdownfield: ^1.0.3

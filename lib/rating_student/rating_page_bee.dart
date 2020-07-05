@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'feedback_page_bee.dart';
 
-import 'feedback_page.dart';
 
-void main() {
-  return runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class RatingPageBee extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: RatingPage(),
-    );
-  }
+  _RatingPageBeeState createState() => _RatingPageBeeState();
 }
 
-class RatingPage extends StatefulWidget {
-  @override
-  _RatingPageState createState() => _RatingPageState();
-}
-
-class _RatingPageState extends State<RatingPage> {
+class _RatingPageBeeState extends State<RatingPageBee> {
   static const TextStyle White40Style = TextStyle(
       fontSize: 40.0, color: Colors.white, fontWeight: FontWeight.bold);
+
+  static const TextStyle White20Style = TextStyle(
+      fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold);
 
   static const TextStyle Black20Style = TextStyle(
       fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold);
@@ -34,7 +23,7 @@ class _RatingPageState extends State<RatingPage> {
       fontSize: 25.0, color: Colors.black, fontWeight: FontWeight.bold);
 
   static const TextStyle Red25Style =
-      TextStyle(fontSize: 25.0, color: Colors.red, fontWeight: FontWeight.bold);
+  TextStyle(fontSize: 25.0, color: Colors.red, fontWeight: FontWeight.bold);
 
   static const TextStyle Black18Style = TextStyle(
       fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.bold);
@@ -49,7 +38,7 @@ class _RatingPageState extends State<RatingPage> {
     _feedbackButtonPressed() {
       setState(() {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => FeedbackPage()));
+            context, MaterialPageRoute(builder: (context) => FeedbackPageBee()));
       });
     }
 
@@ -81,14 +70,14 @@ class _RatingPageState extends State<RatingPage> {
                       height: 50,
                     ),
                     CircleAvatar(
-                      backgroundImage: AssetImage("images/chem.png"),
+                      backgroundImage: AssetImage("images/bee.jpg"),
                       radius: 30,
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     Text(
-                      'CHEMISTRY',
+                      'BEE',
                       style: GoogleFonts.alice(textStyle: White40Style),
                     ),
                     SizedBox(
@@ -96,7 +85,7 @@ class _RatingPageState extends State<RatingPage> {
                     ),
                     Card(
                       margin:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                       clipBehavior: Clip.antiAlias,
                       color: Colors.white,
                       elevation: 8.0,
@@ -126,8 +115,8 @@ class _RatingPageState extends State<RatingPage> {
                                   starCount: 5,
                                   allowHalfRating: false,
                                   spacing: 2.0,
-                                  onRated: (value) {
-                                    print("rating value -> $value");
+                                  onRated: (rating) {
+                                    print("rating value -> $rating");
                                     // print("rating value dd -> ${value.truncate()}");
                                   },
                                 ),
@@ -165,7 +154,7 @@ class _RatingPageState extends State<RatingPage> {
                         ),
                         TextSpan(
                           text:
-                              " If the rating is below 3, support it with a valid reason or else the rating will be considered invalid.",
+                          " If the rating is below 3, support it with a valid reason or else the rating will be considered invalid.",
                           style: GoogleFonts.averageSans(
                               textStyle: Black3815_5Style),
                         ),
@@ -228,6 +217,36 @@ class _RatingPageState extends State<RatingPage> {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            FlatButton(
+              child: Container(
+                width: 130,
+                height: 44,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF17ead9), Color(0xFF6078ea)],
+                  ),
+                  borderRadius: BorderRadius.circular(6.0),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Color(0xFF6078ea).withOpacity(0.2),
+                        offset: Offset(0.0, 8.0),
+                        blurRadius: 8.0),
+                  ],
+                ),
+                child: Center(
+                  child: Text(
+                    'SUBMIT',
+                    style: GoogleFonts.alike(textStyle: White20Style),
+                  ),
+                ),
+              ),
+              onPressed: rating > 0.0
+                  ? () => {print("submitted"), _feedbackButtonPressed()}
+                  : null,
             ),
           ],
         ),

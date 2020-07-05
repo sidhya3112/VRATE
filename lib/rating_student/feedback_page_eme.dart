@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FeedbackPage extends StatefulWidget {
+class FeedbackPageEme extends StatefulWidget {
   @override
-  _FeedbackPageState createState() => _FeedbackPageState();
+  _FeedbackPageEmeState createState() => _FeedbackPageEmeState();
 }
 
-class _FeedbackPageState extends State<FeedbackPage> {
+class _FeedbackPageEmeState extends State<FeedbackPageEme> {
   static const TextStyle White20Style = TextStyle(
       fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold);
 
@@ -44,7 +44,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
       body: Column(
         children: <Widget>[
           Expanded(
-              child: _buildCommentList(),
+            child: _buildCommentList(),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -53,9 +53,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 _addComment(submittedStr);
               },
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 1.0)),
-                contentPadding: const EdgeInsets.all(20.0),
-                hintText: "Add Feedback"
+                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 1.0)),
+                  contentPadding: const EdgeInsets.all(20.0),
+                  hintText: "Add Feedback"
               ),
             ),
           ),

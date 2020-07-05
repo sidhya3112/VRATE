@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vrate/student_welcome.dart';
+import 'package:vrate/main_timetable.dart';
 
 
 class StudentSignUp extends StatefulWidget {
@@ -211,7 +211,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                           onTap: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => StudentWelcomePage()));
+                                MaterialPageRoute(builder: (context) => Timetable()));
                           },
                           child: Center(
                             child: Text(

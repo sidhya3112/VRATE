@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'swipe_screen.dart';
+import 'package:vrate/swipe_screen.dart';
+import 'main_timetable.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -9,6 +11,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SwipeScreen(),
+        ),
+      );
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {

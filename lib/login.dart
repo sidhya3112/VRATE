@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vrate/student_welcome.dart';
+import 'package:vrate/main_timetable.dart';
 import 'package:vrate/studentsignup.dart';
 import 'package:vrate/teachersignup.dart';
 
@@ -200,7 +200,7 @@ class _LoginState extends State<Login> {
                                     context,
                                     new MaterialPageRoute(
                                         builder: (context) =>
-                                        new StudentWelcomePage()));
+                                        new Timetable()));
                               },
                               child: Center(
                                 child: Text(

@@ -7,6 +7,8 @@ import 'package:vrate/rating_student/rating_page_pcwlab.dart';
 import 'package:vrate/rating_student/rating_page_phy.dart';
 import '../dayselection.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../login.dart';
 
 class cardThurs extends StatefulWidget {
   @override
@@ -30,15 +32,35 @@ class _cardThursState extends State<cardThurs> {
       body:SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container( height: 25.0, color: Colors.blue[900]),
+            Container( height: 5.0, color: Colors.blue[900]),
             Container(
               color: Colors.blue[900],
               padding: EdgeInsets.only(left: 20.0, right:20.0, top:30.0, bottom: 10.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("VRATE",
-                    style: GoogleFonts.alice(textStyle: White20Style),),
+                  Row(
+                    children: <Widget>[
+                      Text("VRATE",
+                        style: GoogleFonts.alice(textStyle: White20Style),),
+                      Spacer(),
+                      IconButton(
+                        icon: Icon(
+                          Icons.exit_to_app,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          FirebaseAuth auth = FirebaseAuth.instance;
+                          auth.signOut().then((res) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => Login()),
+                            );
+                          });
+                        },
+                      )
+                    ],
+                  ),
                   SizedBox(height: 10,),
                   topRow(),
 

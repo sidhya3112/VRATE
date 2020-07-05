@@ -4,6 +4,8 @@ import 'package:table_calendar/table_calendar.dart';
 import 'dayselection.dart';
 import 'package:vrate/card/card_monday.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'login.dart';
 
 class Timetable extends StatefulWidget {
   @override
@@ -27,7 +29,7 @@ class _TimetableState extends State<Timetable> {
       body:SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container( height: 25.0, color: Colors.blue[900],),
+            Container( height: 5.0, color: Colors.blue[900],),
             Container(
 
               color: Colors.blue[900],
@@ -35,8 +37,28 @@ class _TimetableState extends State<Timetable> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("VRATE",
-                    style: GoogleFonts.alice(textStyle: White20Style),),
+                  Row(
+                    children: <Widget>[
+                      Text("VRATE",
+                        style: GoogleFonts.alice(textStyle: White20Style),),
+                      Spacer(),
+                      IconButton(
+                        icon: Icon(
+                          Icons.exit_to_app,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          FirebaseAuth auth = FirebaseAuth.instance;
+                          auth.signOut().then((res) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => Login()),
+                            );
+                          });
+                        },
+                      )
+                    ],
+                  ),
                   SizedBox(height: 10,),
                   topRow(),
 

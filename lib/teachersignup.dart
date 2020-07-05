@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
-import 'teacher_welcome.dart';
+import 'package:vrate/main_timetable.dart';
 
 class TeacherSignUp extends StatefulWidget {
 
@@ -239,11 +239,7 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => TeacherWelcomePage()));
-                          },
+                          onTap: () {},
                           child: Center(
                             child: Text(
                               "SIGNUP",

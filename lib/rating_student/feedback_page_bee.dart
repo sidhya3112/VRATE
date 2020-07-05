@@ -7,6 +7,7 @@ class FeedbackPageBee extends StatefulWidget {
 }
 
 class _FeedbackPageBeeState extends State<FeedbackPageBee> {
+
   static const TextStyle White20Style = TextStyle(
       fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold);
 

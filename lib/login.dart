@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vrate/forgot_password.dart';
 import 'package:vrate/main_timetable.dart';
 import 'package:vrate/studentsignup.dart';
 import 'package:vrate/teachersignup.dart';
@@ -142,10 +143,17 @@ class _LoginState extends State<Login> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              Text(
-                                "Forgot Password?",
-                                style:
-                                    GoogleFonts.average(textStyle: Blue15Style),
+                              InkWell(
+                                child: Text(
+                                  "Forgot Password?",
+                                  style:
+                                      GoogleFonts.average(textStyle: Blue15Style),
+                                ),
+                                onTap: () => Navigator.push(
+                                    context,
+                                    new MaterialPageRoute(
+                                        builder: (context) =>
+                                        new ForgotPassword())),
                               ),
                             ],
                           ),

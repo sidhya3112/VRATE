@@ -116,6 +116,15 @@ class _RatingPageChemState extends State<RatingPageChem> {
                                   spacing: 2.0,
                                   onRated: (rating) {
                                     print("rating value -> $rating");
+                                    var values = [
+                                      {'userId': 1, 'rating': 4.5},
+                                      {'userId': 2, 'rating': 4.0},
+                                      {'userId': 3, 'rating': 3.5},
+                                      {'userId': 4, 'rating': 3.0}
+                                    ];
+
+                                    var result = values.map((m) => m['rating']).reduce((a, b) => a + b) / values.length;
+                                    print(result);
                                     // print("rating value dd -> ${value.truncate()}");
                                   },
                                 ),
@@ -243,9 +252,7 @@ class _RatingPageChemState extends State<RatingPageChem> {
                   ),
                 ),
               ),
-              onPressed: rating > 0.0
-                  ? () => {print("submitted"), _feedbackButtonPressed()}
-                  : null,
+              onPressed: (){},
             ),
           ],
         ),

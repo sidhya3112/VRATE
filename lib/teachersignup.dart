@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
-import 'package:vrate/main_timetable.dart';
 
 class TeacherSignUp extends StatefulWidget {
 

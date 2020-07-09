@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:vrate/rating_student/rating_page_bee.dart';
-import 'package:vrate/rating_student/rating_page_eme.dart';
-import 'package:vrate/rating_student/rating_page_math.dart';
-import 'package:vrate/rating_student/rating_page_pcwlab.dart';
-import 'package:vrate/rating_student/rating_page_phy.dart';
 import '../dayselection.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -252,19 +247,19 @@ class _WednesdayState extends State<Wednesday> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) {
                         switch (list3[widget.index]) {
                           case 'Applied Mathematics':
-                            return RatingPageMath();
+                            return cardWed();
                             break;
                           case 'Applied Physics':
-                            return RatingPagePhy();
+                            return cardWed();
                             break;
                           case 'EME':
-                            return RatingPageEme();
+                            return cardWed();
                             break;
                           case 'BEE LAB':
-                            return RatingPageBee();
+                            return cardWed();
                             break;
                           case 'PCW LAB':
-                            return RatingPagePCW();
+                            return cardWed();
                             break;
                           default:
                             return cardWed();

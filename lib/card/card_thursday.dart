@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:vrate/rating_student/rating_page_bee.dart';
-import 'package:vrate/rating_student/rating_page_cpp.dart';
-import 'package:vrate/rating_student/rating_page_eme.dart';
-import 'package:vrate/rating_student/rating_page_pcwlab.dart';
-import 'package:vrate/rating_student/rating_page_phy.dart';
 import '../dayselection.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -252,19 +247,19 @@ class _ThursdayState extends State<Thursday> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) {
                         switch (list3[widget.index]) {
                           case 'EME':
-                            return RatingPageEme();
+                            return cardThurs();
                             break;
                           case 'Applied Physics':
-                            return RatingPagePhy();
+                            return cardThurs();
                             break;
                           case 'Computer Programming':
-                            return RatingPageCpp();
+                            return cardThurs();
                             break;
                           case 'PCW LAB':
-                            return RatingPagePCW();
+                            return cardThurs();
                             break;
                           case 'BEE':
-                            return RatingPageBee();
+                            return cardThurs();
                             break;
                           default:
                             return cardThurs();

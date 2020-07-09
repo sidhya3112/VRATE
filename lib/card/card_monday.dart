@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:vrate/rating_student/rating_page_chem.dart';
-import 'package:vrate/rating_student/rating_page_cpp.dart';
-import 'package:vrate/rating_student/rating_page_math.dart';
-import 'package:vrate/rating_student/rating_page_phy.dart';
+import '../rating_chem/screens/review.dart';
 import '../dayselection.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -252,16 +249,16 @@ class _MondayState extends State<Monday> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) {
                         switch (list3[widget.index]) {
                           case 'Applied Mathematics':
-                            return RatingPageMath();
+                            return cardMon();
                             break;
                           case 'Applied Physics':
-                            return RatingPagePhy();
+                            return cardMon();
                             break;
                           case 'Applied Chemistry':
-                            return RatingPageChem();
+                            return Review();
                             break;
                           case 'CPP LAB':
-                            return RatingPageCpp();
+                            return cardMon();
                             break;
                           default:
                             return cardMon();

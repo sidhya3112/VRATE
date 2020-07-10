@@ -81,7 +81,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 20.0),
+                padding: EdgeInsets.only(top: 20.0, left: 60.0),
                 child: Image.asset("images/signup.jpg"),
               ),
             ],
@@ -94,14 +94,14 @@ class _StudentSignUpState extends State<StudentSignUp> {
                 child:Column(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(right: 285.0),
+                      padding: EdgeInsets.only(right: 240.0),
                       child: Text(
                         'VRATE',
                         style: GoogleFonts.alice(textStyle: Black20Style),
                       ),
                     ),
 
-                    SizedBox(height: 180),
+                    SizedBox(height: 95),
                     Container(
                       child: Padding(
                         padding:
@@ -112,9 +112,6 @@ class _StudentSignUpState extends State<StudentSignUp> {
                             Text(
                               'Student SignUp',
                               style: GoogleFonts.alice(textStyle: Black20Style),
-                            ),
-                            SizedBox(
-                              height: 20.0,
                             ),
                             TextFormField(
                               textCapitalization: TextCapitalization.words,
@@ -136,11 +133,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                 else return null;
                               },
                             ),
-                            SizedBox(
-                              height: 15.0,
-                            ),
                             TextFormField(
-
                               decoration: InputDecoration(
                                 prefixIcon: Icon(
                                   Icons.email,
@@ -156,9 +149,6 @@ class _StudentSignUpState extends State<StudentSignUp> {
                               keyboardType: TextInputType.emailAddress,
                               validator: emailValidator,
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
                             DropdownButtonFormField(
                               decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.book,
@@ -166,25 +156,21 @@ class _StudentSignUpState extends State<StudentSignUp> {
                               ),
                               hint: Text('Branch                                       ',
                                 style: TextStyle(
-                                    color: Colors.black26, fontSize: 16.0), ),
+                                    color: Colors.black45, fontSize: 15.0), ),
                               value: _selectedBranch,
                               onChanged: (newValue) {
                                 setState(() {
                                   _selectedBranch = newValue;
                                 });
                               },
+                              validator: (value) => value == null ? 'Please select branch' : null,
                               items: _branch.map((subject) {
                                 return DropdownMenuItem(
                                   child: new Text(subject),
                                   value: subject,
                                 );
                               }).toList(),
-                              validator:(value){
-                                if(value.isEmpty) return 'Enter branch';
-                                else return null;
-                              },
                             ),
-
                             DropdownButtonFormField(
                               decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.person,
@@ -192,27 +178,20 @@ class _StudentSignUpState extends State<StudentSignUp> {
                               ),
                               hint: Text('Batch',
                                 style: TextStyle(
-                                    color: Colors.black26, fontSize: 16.0), ),
+                                    color: Colors.black45, fontSize: 16.0), ),
                               value: _selectedBatch,
                               onChanged: (newValue) {
                                 setState(() {
                                   _selectedBatch = newValue;
                                 });
                               },
+                              validator: (value) => value == null ? 'Please select batch' : null,
                               items: _batch.map((subject) {
                                 return DropdownMenuItem(
                                   child: new Text(subject),
                                   value: subject,
                                 );
                               }).toList(),
-                              validator:(value){
-                                if(value.isEmpty) return 'Enter batch';
-                                else return null;
-                              },
-                            ),
-
-                            SizedBox(
-                              height: 20.0,
                             ),
                             TextFormField(
                                 keyboardType: TextInputType.number,
@@ -229,12 +208,9 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                 ),
                                 controller: phoneInputController,
                                 validator: (value){
-                                  if(value.length != 10) return 'Invalid Phone No';
+                                  if(value.length != 10) return 'Invalid Phone No.';
                                   else return null;
                                 }
-                            ),
-                            SizedBox(
-                              height: 20.0,
                             ),
                             TextFormField(
                               obscureText: true,
@@ -253,9 +229,6 @@ class _StudentSignUpState extends State<StudentSignUp> {
                               validator: pwdValidator,
 
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
                             TextFormField(
                               obscureText: true,
                               decoration: InputDecoration(
@@ -273,13 +246,11 @@ class _StudentSignUpState extends State<StudentSignUp> {
                               validator: pwdValidator,
 
                             ),
-
-
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(height: 30.0),
+                    SizedBox(height: 15.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

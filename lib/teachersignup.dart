@@ -103,7 +103,7 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 20.0),
+                padding: EdgeInsets.only(top: 20.0, left: 60,),
                 child: Image.asset("images/signup.jpg"),
               ),
             ],
@@ -116,14 +116,14 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                 child:Column(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(right: 285.0),
+                      padding: EdgeInsets.only(right: 240.0),
                       child: Text(
                         'VRATE',
                         style: GoogleFonts.alice(textStyle: Black20Style),
                       ),
                     ),
 
-                    SizedBox(height: 180),
+                    SizedBox(height: 95),
                     Container(
                       child: Padding(
                         padding:
@@ -134,9 +134,6 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                             Text(
                               'Teacher SignUp',
                               style: GoogleFonts.alice(textStyle: Black20Style),
-                            ),
-                            SizedBox(
-                              height: 20.0,
                             ),
                             TextFormField(
                               textCapitalization: TextCapitalization.words,
@@ -158,11 +155,7 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                 else return null;
                               },
                             ),
-                            SizedBox(
-                              height: 15.0,
-                            ),
                             TextFormField(
-
                               decoration: InputDecoration(
                                 prefixIcon: Icon(
                                   Icons.email,
@@ -178,9 +171,6 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                               keyboardType: TextInputType.emailAddress,
                               validator: emailValidator,
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
                             DropdownButtonFormField(
                               decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.book,
@@ -189,7 +179,7 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                               hint: Text(
                                 'Subjects Teaching',
                                 style: TextStyle(
-                                    color: Colors.black26, fontSize: 16.0),
+                                    color: Colors.black45, fontSize: 16.0),
                               ),
                               value: selectedSubject,
                               onChanged: (newValue) {
@@ -251,9 +241,6 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                 });
                               },
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
                             TextFormField(
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
@@ -269,12 +256,9 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                 ),
                                 controller: phoneInputController,
                                 validator: (value){
-                                  if(value.length != 10) return 'Invalid Phone No';
+                                  if(value.length != 10) return 'Invalid Phone No.';
                                   else return null;
                                 }
-                            ),
-                            SizedBox(
-                              height: 20.0,
                             ),
                             TextFormField(
                               obscureText: true,
@@ -291,10 +275,6 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                               ),
                               controller: pwdInputController,
                               validator: pwdValidator,
-
-                            ),
-                            SizedBox(
-                              height: 20.0,
                             ),
                             TextFormField(
                               obscureText: true,
@@ -311,15 +291,12 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                               ),
                               controller: confirmPwdInputController,
                               validator: pwdValidator,
-
                             ),
-
-
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(height: 30.0),
+                    SizedBox(height: 15.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

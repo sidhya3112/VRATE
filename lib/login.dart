@@ -117,7 +117,7 @@ class _LoginState extends State<Login> {
                     SizedBox(height: 180),
                     Container(
                       width: double.infinity,
-                      height: 275,
+                      height: 260,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8.0),
@@ -142,9 +142,6 @@ class _LoginState extends State<Login> {
                               'Login',
                               style: GoogleFonts.alice(textStyle: Black20Style),
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
                             TextFormField(
                               decoration: InputDecoration(
                                 prefixIcon: Icon(
@@ -160,9 +157,6 @@ class _LoginState extends State<Login> {
                               controller: emailInputController,
                               keyboardType: TextInputType.emailAddress,
                               validator: emailValidator,
-                            ),
-                            SizedBox(
-                              height: 15.0,
                             ),
                             TextFormField(
                               obscureText: true,
@@ -180,7 +174,7 @@ class _LoginState extends State<Login> {
                               controller: pwdInputController,
                               validator: pwdValidator,
                             ),
-                            SizedBox(height: 35.0),
+                            SizedBox(height: 25.0),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[

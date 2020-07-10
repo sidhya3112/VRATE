@@ -149,23 +149,29 @@ class topRow extends StatelessWidget {
       children: <Widget>[
         Row(
           children: <Widget>[
+            Text("Student's",
+                style: GoogleFonts.average(textStyle:  TextStyle(
+                  fontSize: 24.0,
+                  color:Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),)
+            ),
+            SizedBox(width: 8.0,),
             Text("Time",
-                style: GoogleFonts.average(
-                  textStyle: TextStyle(
-                    fontSize: 26.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
+                style: GoogleFonts.average(textStyle:  TextStyle(
+                  fontSize: 24.0,
+                  color:Colors.blue[400] ,
+                  fontWeight: FontWeight.bold,
+                ),)
+            ),
             SizedBox(width: 2.0),
             Text("Table",
-                style: GoogleFonts.average(
-                  textStyle: TextStyle(
-                    fontSize: 26.0,
-                    color: Colors.blue[400],
-                    fontWeight: FontWeight.bold,
-                  ),
-                ))
+                style: GoogleFonts.average(textStyle: TextStyle(
+                  fontSize: 24.0,
+                  color: Colors.blue[400],
+                  fontWeight: FontWeight.bold,
+                ),)
+            )
           ],
         ),
         Spacer(),

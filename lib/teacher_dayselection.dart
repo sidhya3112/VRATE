@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:vrate/teacher_card_phy/teachercard_friday.dart';
-import 'package:vrate/teacher_card_phy/teachercard_monday.dart';
-import 'package:vrate/teacher_card_phy/teachercard_saturday.dart';
-import 'package:vrate/teacher_card_phy/teachercard_thursday.dart';
-import 'package:vrate/teacher_card_phy/teachercard_tuesday.dart';
-import 'package:vrate/teacher_card_phy/teachercard_wednesday.dart';
+import 'package:vrate/teacher_card/teachercard_friday.dart';
+import 'package:vrate/teacher_card/teachercard_monday.dart';
+import 'package:vrate/teacher_card/teachercard_saturday.dart';
+import 'package:vrate/teacher_card/teachercard_thursday.dart';
+import 'package:vrate/teacher_card/teachercard_tuesday.dart';
+import 'package:vrate/teacher_card/teachercard_wednesday.dart';
 
 class TeacherDaySelection extends StatefulWidget {
   final index;

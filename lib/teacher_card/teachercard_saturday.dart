@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:vrate/teacher_rating_phy/screens/review.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../login.dart';
 import '../teacher_dayselection.dart';
 
-class TeachercardWed extends StatefulWidget {
+class TeachercardSat extends StatefulWidget {
   @override
-  _TeachercardWedState createState() => _TeachercardWedState();
+  _TeachercardSatState createState() => _TeachercardSatState();
 }
 
-class _TeachercardWedState extends State<TeachercardWed> {
+class _TeachercardSatState extends State<TeachercardSat> {
   CalendarController _controller;
   @override
   void initState(){
@@ -94,7 +93,7 @@ class _TeachercardWedState extends State<TeachercardWed> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: List.generate(8,
-                    (index) => TeacherWednesday(
+                    (index) => TeacherSaturday(
                   index: index,
                 ),
               ),
@@ -117,19 +116,25 @@ class topRow extends StatelessWidget {
       children: <Widget>[
         Row(
           children: <Widget>[
-            Text("Time",
+            Text("Teacher's",
                 style: GoogleFonts.average(textStyle:  TextStyle(
-                  fontSize: 26.0,
-                  color:Colors.white ,
+                  fontSize: 24.0,
+                  color:Colors.white,
                   fontWeight: FontWeight.bold,
                 ),)
             ),
-
+            SizedBox(width: 8.0,),
+            Text("Time",
+                style: GoogleFonts.average(textStyle:  TextStyle(
+                  fontSize: 24.0,
+                  color:Colors.blue[400] ,
+                  fontWeight: FontWeight.bold,
+                ),)
+            ),
             SizedBox(width: 2.0),
-
             Text("Table",
                 style: GoogleFonts.average(textStyle: TextStyle(
-                  fontSize: 26.0,
+                  fontSize: 24.0,
                   color: Colors.blue[400],
                   fontWeight: FontWeight.bold,
                 ),)
@@ -171,19 +176,19 @@ class lineGen extends StatelessWidget {
 }
 
 
-class TeacherWednesday extends StatefulWidget {
+class TeacherSaturday extends StatefulWidget {
   final index;
 
-  const TeacherWednesday({Key key, this.index}) : super(key: key);
+  const TeacherSaturday({Key key, this.index}) : super(key: key);
   @override
-  _TeacherWednesdayState createState() => _TeacherWednesdayState();
+  _TeacherSaturdayState createState() => _TeacherSaturdayState();
 }
 
 // ignore: camel_case_types
-class _TeacherWednesdayState extends State<TeacherWednesday> {
+class _TeacherSaturdayState extends State<TeacherSaturday> {
   var list1 =["9:00 - 10:00", "10:00 - 11:00" , "11:15 - 12:15" , "12:15 - 13:15", "13:15 - 14:15" , "14:15 - 15:15" , "15:15 - 16:15", "16:15 - 17:15"];
   var list2 =["9:00", "10:00 " , "11:15 " , "12:15", "13:15 " , "14:15 " , "15:15 ", "16:15 "];
-  var list3 =["BREAK", "BREAK" , "Applied Physics" , "BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK"];
+  var list3 =["BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK"];
 
 
   @override
@@ -244,29 +249,7 @@ class _TeacherWednesdayState extends State<TeacherWednesday> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        switch (list3[widget.index]) {
-                          case 'Applied Mathematics':
-                            return TeachercardWed();
-                            break;
-                          case 'Applied Physics':
-                            return TeacherReviewPhy();
-                            break;
-                          case 'EME':
-                            return TeachercardWed();
-                            break;
-                          case 'BEE LAB':
-                            return TeachercardWed();
-                            break;
-                          case 'PCW LAB':
-                            return TeachercardWed();
-                            break;
-                          default:
-                            return TeachercardWed();
-                        }
-                      }));
-                    },
+                    onPressed: (){},
                   ),
                 ],
               ),

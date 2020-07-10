@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:vrate/teacher_card_phy/teachercard_monday.dart';
+import 'package:vrate/teacher_card/teachercard_monday.dart';
 import 'package:vrate/teacher_dayselection.dart';
-import 'package:vrate/card/card_monday.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login.dart';
@@ -150,23 +149,29 @@ class topRow extends StatelessWidget {
       children: <Widget>[
         Row(
           children: <Widget>[
+            Text("Teacher's",
+                style: GoogleFonts.average(textStyle:  TextStyle(
+                  fontSize: 24.0,
+                  color:Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),)
+            ),
+            SizedBox(width: 8.0,),
             Text("Time",
-                style: GoogleFonts.average(
-                  textStyle: TextStyle(
-                    fontSize: 26.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
+                style: GoogleFonts.average(textStyle:  TextStyle(
+                  fontSize: 24.0,
+                  color:Colors.blue[400] ,
+                  fontWeight: FontWeight.bold,
+                ),)
+            ),
             SizedBox(width: 2.0),
             Text("Table",
-                style: GoogleFonts.average(
-                  textStyle: TextStyle(
-                    fontSize: 26.0,
-                    color: Colors.blue[400],
-                    fontWeight: FontWeight.bold,
-                  ),
-                ))
+                style: GoogleFonts.average(textStyle: TextStyle(
+                  fontSize: 24.0,
+                  color: Colors.blue[400],
+                  fontWeight: FontWeight.bold,
+                ),)
+            )
           ],
         ),
         Spacer(),

@@ -272,6 +272,7 @@ class _StudentSignUpState extends State<StudentSignUp> {
                                   "fname": nameInputController.text,
                                   "email": emailInputController.text,
                                   "phone": phoneInputController.text,
+                                  "role": 'student',
                                 })
                                     .then((result) => {
                                   Navigator.pushAndRemoveUntil(

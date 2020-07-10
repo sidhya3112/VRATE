@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vrate/forgot_password.dart';
 import 'package:vrate/main_timetable.dart';
 import 'package:vrate/studentsignup.dart';
+import 'package:vrate/teacher_timetable.dart';
 import 'package:vrate/teachersignup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -246,15 +247,28 @@ class _LoginState extends State<Login> {
                                         password: pwdInputController.text)
                                         .then((currentUser) => Firestore.instance
                                         .collection("users")
-                                        .document(currentUser.uid)
-                                        .get()
-                                        .then((DocumentSnapshot result) =>
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => Timetable(
-                                                    uid: currentUser.uid
-                                                ))))
+                                    .where('uid', isEqualTo: currentUser.uid)
+                                        .getDocuments()
+                                        .then((docs){
+                                          if(docs.documents[0].exists){
+                                            if(docs.documents[0].data['role'] == 'teacher'){
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) => TeacherTimetable(
+                                                          uid: currentUser.uid
+                                                      )));
+                                            }
+                                            else if(docs.documents[0].data['role'] == 'student'){
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) => Timetable(
+                                                          uid: currentUser.uid
+                                                      )));
+                                            }
+                                          }
+                                    })
                                         .catchError((err) => print(err)))
                                         .catchError((err) => print(err));
                                   }

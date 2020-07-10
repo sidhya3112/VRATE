@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vrate/swipe_screen.dart';
+import 'package:vrate/teacher_timetable.dart';
 import 'main_timetable.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -32,15 +33,28 @@ class _SplashScreenState extends State<SplashScreen> {
           {
             Firestore.instance
                 .collection("users")
-                .document(currentUser.uid)
-                .get()
-                .then((DocumentSnapshot result) =>
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Timetable(
-                          uid: currentUser.uid,
-                        ))))
+                .where('uid', isEqualTo: currentUser.uid)
+                .getDocuments()
+                .then((docs){
+              if(docs.documents[0].exists){
+                if(docs.documents[0].data['role'] == 'teacher'){
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TeacherTimetable(
+                              uid: currentUser.uid
+                          )));
+                }
+                else if(docs.documents[0].data['role'] == 'student'){
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Timetable(
+                              uid: currentUser.uid
+                          )));
+                }
+              }
+            })
                 .catchError((err) => print(err))
           }
       })

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:vrate/teacher_rating_phy/screens/review.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../login.dart';
 import '../teacher_dayselection.dart';
 
-class TeachercardMon extends StatefulWidget {
+class TeachercardTues extends StatefulWidget {
   @override
-  _TeachercardMonState createState() => _TeachercardMonState();
+  _TeachercardTuesState createState() => _TeachercardTuesState();
 }
 
-class _TeachercardMonState extends State<TeachercardMon> {
+class _TeachercardTuesState extends State<TeachercardTues> {
   CalendarController _controller;
   @override
   void initState(){
@@ -94,7 +93,7 @@ class _TeachercardMonState extends State<TeachercardMon> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: List.generate(8,
-                    (index) => TeacherMonday(
+                    (index) => TeacherTuesday(
                   index: index,
                 ),
               ),
@@ -117,19 +116,25 @@ class topRow extends StatelessWidget {
       children: <Widget>[
         Row(
           children: <Widget>[
-            Text("Time",
+            Text("Teacher's",
                 style: GoogleFonts.average(textStyle:  TextStyle(
-                  fontSize: 26.0,
-                  color:Colors.white ,
+                  fontSize: 24.0,
+                  color:Colors.white,
                   fontWeight: FontWeight.bold,
                 ),)
             ),
-
+            SizedBox(width: 8.0,),
+            Text("Time",
+                style: GoogleFonts.average(textStyle:  TextStyle(
+                  fontSize: 24.0,
+                  color:Colors.blue[400] ,
+                  fontWeight: FontWeight.bold,
+                ),)
+            ),
             SizedBox(width: 2.0),
-
             Text("Table",
                 style: GoogleFonts.average(textStyle: TextStyle(
-                  fontSize: 26.0,
+                  fontSize: 24.0,
                   color: Colors.blue[400],
                   fontWeight: FontWeight.bold,
                 ),)
@@ -144,7 +149,6 @@ class topRow extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),)
         )
-
       ],
     );
   }
@@ -172,19 +176,19 @@ class lineGen extends StatelessWidget {
 }
 
 
-class TeacherMonday extends StatefulWidget {
+class TeacherTuesday extends StatefulWidget {
   final index;
 
-  const TeacherMonday({Key key, this.index}) : super(key: key);
+  const TeacherTuesday({Key key, this.index}) : super(key: key);
   @override
-  _TeacherMondayState createState() => _TeacherMondayState();
+  _TeacherTuesdayState createState() => _TeacherTuesdayState();
 }
 
 // ignore: camel_case_types
-class _TeacherMondayState extends State<TeacherMonday> {
+class _TeacherTuesdayState extends State<TeacherTuesday> {
   var list1 =["9:00 - 10:00", "10:00 - 11:00" , "11:15 - 12:15" , "12:15 - 13:15", "13:15 - 14:15" , "14:15 - 15:15" , "15:15 - 16:15", "16:15 - 17:15"];
   var list2 =["9:00", "10:00 " , "11:15 " , "12:15", "13:15 " , "14:15 " , "15:15 ", "16:15 "];
-  var list3 =["BREAK", "BREAK" , "BREAK" , "BREAK", "Applied Physics" , "BREAK" , "BREAK", "BREAK"];
+  var list3 =["Applied Mathematics", "Applied Chemistry" , "Computer Programming" , "BREAK", "BREAK" , "BEE" , "CPP LAB", "CPP LAB"];
 
 
   @override
@@ -249,19 +253,22 @@ class _TeacherMondayState extends State<TeacherMonday> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) {
                         switch (list3[widget.index]) {
                           case 'Applied Mathematics':
-                            return TeachercardMon();
-                            break;
-                          case 'Applied Physics':
-                            return TeacherReviewPhy();
+                            return TeachercardTues();
                             break;
                           case 'Applied Chemistry':
-                            return TeachercardMon();
+                            return TeachercardTues();
+                            break;
+                          case 'BEE':
+                            return TeachercardTues();
+                            break;
+                          case 'Computer Programming':
+                            return TeachercardTues();
                             break;
                           case 'CPP LAB':
-                            return TeachercardMon();
+                            return TeachercardTues();
                             break;
                           default:
-                            return TeachercardMon();
+                            return TeachercardTues();
                         }
                       }));
                     },
@@ -274,4 +281,5 @@ class _TeacherMondayState extends State<TeacherMonday> {
       ],
     );
   }
+
 }

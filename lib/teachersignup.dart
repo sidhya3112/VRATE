@@ -82,14 +82,11 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
     }
   }
 
-
   static const TextStyle White16Style = TextStyle(
       fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold);
 
   static const TextStyle Black20Style = TextStyle(
       fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +100,10 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 20.0, left: 60,),
+                padding: EdgeInsets.only(
+                  top: 20.0,
+                  left: 60,
+                ),
                 child: Image.asset("images/signup.jpg"),
               ),
             ],
@@ -113,7 +113,7 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
               key: _registerFormKey,
               child: Padding(
                 padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
-                child:Column(
+                child: Column(
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.only(right: 240.0),
@@ -122,12 +122,11 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                         style: GoogleFonts.alice(textStyle: Black20Style),
                       ),
                     ),
-
                     SizedBox(height: 95),
                     Container(
                       child: Padding(
                         padding:
-                        EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                            EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -150,9 +149,11 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                               ),
                               textInputAction: TextInputAction.next,
                               controller: nameInputController,
-                              validator:(value){
-                                if(value.isEmpty) return 'Invalid name';
-                                else return null;
+                              validator: (value) {
+                                if (value.isEmpty)
+                                  return 'Invalid name';
+                                else
+                                  return null;
                               },
                             ),
                             TextFormField(
@@ -187,7 +188,9 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                   selectedSubject = newValue;
                                 });
                               },
-                              validator: (value) => value == null ? 'Please select subject' : null,
+                              validator: (value) => value == null
+                                  ? 'Please select subject'
+                                  : null,
                               items: subject.map((subject) {
                                 return DropdownMenuItem(
                                   child: new Text(subject),
@@ -255,11 +258,12 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                       color: Colors.black26, fontSize: 16.0),
                                 ),
                                 controller: phoneInputController,
-                                validator: (value){
-                                  if(value.length != 10) return 'Invalid Phone No.';
-                                  else return null;
-                                }
-                            ),
+                                validator: (value) {
+                                  if (value.length != 10)
+                                    return 'Invalid Phone No.';
+                                  else
+                                    return null;
+                                }),
                             TextFormField(
                               obscureText: true,
                               decoration: InputDecoration(
@@ -300,40 +304,42 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-
                         InkWell(
-                          onTap:(){
+                          onTap: () {
                             if (_registerFormKey.currentState.validate()) {
                               if (pwdInputController.text ==
                                   confirmPwdInputController.text) {
                                 FirebaseAuth.instance
                                     .createUserWithEmailAndPassword(
-                                    email: emailInputController.text,
-                                    password: pwdInputController.text)
+                                        email: emailInputController.text,
+                                        password: pwdInputController.text)
                                     .then((currentUser) => Firestore.instance
-                                    .collection("users")
-                                    .document(currentUser.uid)
-                                    .setData({
-                                  "uid": currentUser.uid,
-                                  "fname": nameInputController.text,
-                                  "email": emailInputController.text,
-                                  "phone": phoneInputController.text,
-                                })
-                                    .then((result) => {
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => TeacherTimetable(
-                                            uid: currentUser.uid,
-                                          )),
-                                          (_) => false),
-                                  nameInputController.clear(),
-                                  phoneInputController.clear(),
-                                  emailInputController.clear(),
-                                  pwdInputController.clear(),
-                                  confirmPwdInputController.clear()
-                                })
-                                    .catchError((err) => print(err)))
+                                        .collection("users")
+                                        .document(currentUser.uid)
+                                        .setData({
+                                          "uid": currentUser.uid,
+                                          "fname": nameInputController.text,
+                                          "email": emailInputController.text,
+                                          "phone": phoneInputController.text,
+                                          "role": 'teacher',
+                                        })
+                                        .then((result) => {
+                                              Navigator.pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          TeacherTimetable(
+                                                            uid:
+                                                                currentUser.uid,
+                                                          )),
+                                                  (_) => false),
+                                              nameInputController.clear(),
+                                              phoneInputController.clear(),
+                                              emailInputController.clear(),
+                                              pwdInputController.clear(),
+                                              confirmPwdInputController.clear()
+                                            })
+                                        .catchError((err) => print(err)))
                                     .catchError((err) => print(err));
                               } else {
                                 showDialog(
@@ -341,7 +347,8 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
                                     builder: (BuildContext context) {
                                       return AlertDialog(
                                         title: Text("Error"),
-                                        content: Text("The passwords do not match"),
+                                        content:
+                                            Text("The passwords do not match"),
                                         actions: <Widget>[
                                           FlatButton(
                                             child: Text("Close"),
@@ -396,12 +403,3 @@ class _TeacherSignUpState extends State<TeacherSignUp> {
     );
   }
 }
-
-
-
-
-
-
-
-
-

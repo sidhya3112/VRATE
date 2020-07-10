@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
-import 'package:vrate/main_timetable.dart';
 import 'package:vrate/teacher_timetable.dart';
 
 class TeacherSignUp extends StatefulWidget {

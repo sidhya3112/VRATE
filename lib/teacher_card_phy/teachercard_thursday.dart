@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:vrate/rating_phy/screens/review.dart';
 import 'package:vrate/teacher_rating_phy/screens/review.dart';
-import '../dayselection.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../login.dart';
+import '../teacher_dayselection.dart';
 
 class TeachercardThurs extends StatefulWidget {
   @override
@@ -85,7 +84,7 @@ class _TeachercardThursState extends State<TeachercardThurs> {
                       ),
                       new Positioned(
                           top: 55.0,
-                          child: DaySelection()
+                          child: TeacherDaySelection()
                       ),
                     ],
                   ),
@@ -95,7 +94,7 @@ class _TeachercardThursState extends State<TeachercardThurs> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: List.generate(8,
-                    (index) => Thursday(
+                    (index) => TeacherThursday(
                   index: index,
                 ),
               ),
@@ -172,16 +171,16 @@ class lineGen extends StatelessWidget {
 }
 
 
-class Thursday extends StatefulWidget {
+class TeacherThursday extends StatefulWidget {
   final index;
 
-  const Thursday({Key key, this.index}) : super(key: key);
+  const TeacherThursday({Key key, this.index}) : super(key: key);
   @override
-  _ThursdayState createState() => _ThursdayState();
+  _TeacherThursdayState createState() => _TeacherThursdayState();
 }
 
 // ignore: camel_case_types
-class _ThursdayState extends State<Thursday> {
+class _TeacherThursdayState extends State<TeacherThursday> {
   var list1 =["9:00 - 10:00", "10:00 - 11:00" , "11:15 - 12:15" , "12:15 - 13:15", "13:15 - 14:15" , "14:15 - 15:15" , "15:15 - 16:15", "16:15 - 17:15"];
   var list2 =["9:00", "10:00 " , "11:15 " , "12:15", "13:15 " , "14:15 " , "15:15 ", "16:15 "];
   var list3 =["BREAK", "BREAK" , "Applied Physics" , "BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK"];

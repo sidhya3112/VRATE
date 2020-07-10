@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:vrate/teacher_card_phy/teachercard_monday.dart';
 import 'package:vrate/teacher_dayselection.dart';
 import 'package:vrate/card/card_monday.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -124,7 +125,7 @@ class _TeacherTimetableState extends State<TeacherTimetable> {
                         mainAxisSize: MainAxisSize.min,
                         children: List.generate(
                           8,
-                              (index) => Monday(
+                              (index) => TeacherMonday(
                             index: index,
                           ),
                         ),

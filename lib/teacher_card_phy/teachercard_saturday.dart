@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import '../dayselection.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../login.dart';
+import '../teacher_dayselection.dart';
 
 class TeachercardSat extends StatefulWidget {
   @override
@@ -83,7 +83,7 @@ class _TeachercardSatState extends State<TeachercardSat> {
                       ),
                       new Positioned(
                           top: 55.0,
-                          child: DaySelection()
+                          child: TeacherDaySelection()
                       ),
                     ],
                   ),
@@ -93,7 +93,7 @@ class _TeachercardSatState extends State<TeachercardSat> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: List.generate(8,
-                    (index) => Saturday(
+                    (index) => TeacherSaturday(
                   index: index,
                 ),
               ),
@@ -170,16 +170,16 @@ class lineGen extends StatelessWidget {
 }
 
 
-class Saturday extends StatefulWidget {
+class TeacherSaturday extends StatefulWidget {
   final index;
 
-  const Saturday({Key key, this.index}) : super(key: key);
+  const TeacherSaturday({Key key, this.index}) : super(key: key);
   @override
-  _SaturdayState createState() => _SaturdayState();
+  _TeacherSaturdayState createState() => _TeacherSaturdayState();
 }
 
 // ignore: camel_case_types
-class _SaturdayState extends State<Saturday> {
+class _TeacherSaturdayState extends State<TeacherSaturday> {
   var list1 =["9:00 - 10:00", "10:00 - 11:00" , "11:15 - 12:15" , "12:15 - 13:15", "13:15 - 14:15" , "14:15 - 15:15" , "15:15 - 16:15", "16:15 - 17:15"];
   var list2 =["9:00", "10:00 " , "11:15 " , "12:15", "13:15 " , "14:15 " , "15:15 ", "16:15 "];
   var list3 =["BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK"];

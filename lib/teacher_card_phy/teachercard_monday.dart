@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:vrate/rating_phy/screens/review.dart';
 import 'package:vrate/teacher_rating_phy/screens/review.dart';
-import '../dayselection.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../login.dart';
+import '../teacher_dayselection.dart';
 
 class TeachercardMon extends StatefulWidget {
   @override
@@ -85,7 +84,7 @@ class _TeachercardMonState extends State<TeachercardMon> {
                       ),
                       new Positioned(
                           top: 55.0,
-                          child: DaySelection()
+                          child: TeacherDaySelection()
                       ),
                     ],
                   ),
@@ -95,7 +94,7 @@ class _TeachercardMonState extends State<TeachercardMon> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: List.generate(8,
-                    (index) => Monday(
+                    (index) => TeacherMonday(
                   index: index,
                 ),
               ),
@@ -173,16 +172,16 @@ class lineGen extends StatelessWidget {
 }
 
 
-class Monday extends StatefulWidget {
+class TeacherMonday extends StatefulWidget {
   final index;
 
-  const Monday({Key key, this.index}) : super(key: key);
+  const TeacherMonday({Key key, this.index}) : super(key: key);
   @override
-  _MondayState createState() => _MondayState();
+  _TeacherMondayState createState() => _TeacherMondayState();
 }
 
 // ignore: camel_case_types
-class _MondayState extends State<Monday> {
+class _TeacherMondayState extends State<TeacherMonday> {
   var list1 =["9:00 - 10:00", "10:00 - 11:00" , "11:15 - 12:15" , "12:15 - 13:15", "13:15 - 14:15" , "14:15 - 15:15" , "15:15 - 16:15", "16:15 - 17:15"];
   var list2 =["9:00", "10:00 " , "11:15 " , "12:15", "13:15 " , "14:15 " , "15:15 ", "16:15 "];
   var list3 =["BREAK", "BREAK" , "BREAK" , "BREAK", "Applied Physics" , "BREAK" , "BREAK", "BREAK"];

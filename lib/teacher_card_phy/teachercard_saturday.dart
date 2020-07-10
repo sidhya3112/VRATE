@@ -5,12 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../login.dart';
 
-class cardTues extends StatefulWidget {
+class TeachercardSat extends StatefulWidget {
   @override
-  _cardTuesState createState() => _cardTuesState();
+  _TeachercardSatState createState() => _TeachercardSatState();
 }
 
-class _cardTuesState extends State<cardTues> {
+class _TeachercardSatState extends State<TeachercardSat> {
   CalendarController _controller;
   @override
   void initState(){
@@ -93,7 +93,7 @@ class _cardTuesState extends State<cardTues> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: List.generate(8,
-                    (index) => Tuesday(
+                    (index) => Saturday(
                   index: index,
                 ),
               ),
@@ -170,19 +170,19 @@ class lineGen extends StatelessWidget {
 }
 
 
-class Tuesday extends StatefulWidget {
+class Saturday extends StatefulWidget {
   final index;
 
-  const Tuesday({Key key, this.index}) : super(key: key);
+  const Saturday({Key key, this.index}) : super(key: key);
   @override
-  _TuesdayState createState() => _TuesdayState();
+  _SaturdayState createState() => _SaturdayState();
 }
 
 // ignore: camel_case_types
-class _TuesdayState extends State<Tuesday> {
+class _SaturdayState extends State<Saturday> {
   var list1 =["9:00 - 10:00", "10:00 - 11:00" , "11:15 - 12:15" , "12:15 - 13:15", "13:15 - 14:15" , "14:15 - 15:15" , "15:15 - 16:15", "16:15 - 17:15"];
   var list2 =["9:00", "10:00 " , "11:15 " , "12:15", "13:15 " , "14:15 " , "15:15 ", "16:15 "];
-  var list3 =["Applied Mathematics", "Applied Chemistry" , "Computer Programming" , "BREAK", "BREAK" , "BEE" , "CPP LAB", "CPP LAB"];
+  var list3 =["BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK"];
 
 
   @override
@@ -243,29 +243,7 @@ class _TuesdayState extends State<Tuesday> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        switch (list3[widget.index]) {
-                          case 'Applied Mathematics':
-                            return cardTues();
-                            break;
-                          case 'Applied Chemistry':
-                            return cardTues();
-                            break;
-                          case 'BEE':
-                            return cardTues();
-                            break;
-                          case 'Computer Programming':
-                            return cardTues();
-                            break;
-                          case 'CPP LAB':
-                            return cardTues();
-                            break;
-                          default:
-                            return cardTues();
-                        }
-                      }));
-                    },
+                    onPressed: (){},
                   ),
                 ],
               ),
@@ -275,5 +253,4 @@ class _TuesdayState extends State<Tuesday> {
       ],
     );
   }
-
 }

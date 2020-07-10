@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'reviews_chem.dart';
+part of 'reviews_phy.dart';
 
 // **************************************************************************
 // StoreGenerator

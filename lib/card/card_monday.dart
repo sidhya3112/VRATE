@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import '../rating_chem/screens/review.dart';
+import 'package:vrate/rating_phy/screens/review.dart';
 import '../dayselection.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -252,10 +252,10 @@ class _MondayState extends State<Monday> {
                             return cardMon();
                             break;
                           case 'Applied Physics':
-                            return cardMon();
+                            return ReviewPhy();
                             break;
                           case 'Applied Chemistry':
-                            return Review();
+                            return cardMon();
                             break;
                           case 'CPP LAB':
                             return cardMon();

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:mobx/mobx.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './reviewmodel.dart';
-part 'reviews_chem.g.dart';
+part 'reviews_phy.g.dart';
 class Reviews = ReviewsBase with _$Reviews;
 abstract class ReviewsBase with Store {
   @observable

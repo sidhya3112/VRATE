@@ -5,12 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../login.dart';
 
-class cardTues extends StatefulWidget {
+class TeachercardTues extends StatefulWidget {
   @override
-  _cardTuesState createState() => _cardTuesState();
+  _TeachercardTuesState createState() => _TeachercardTuesState();
 }
 
-class _cardTuesState extends State<cardTues> {
+class _TeachercardTuesState extends State<TeachercardTues> {
   CalendarController _controller;
   @override
   void initState(){
@@ -182,7 +182,7 @@ class Tuesday extends StatefulWidget {
 class _TuesdayState extends State<Tuesday> {
   var list1 =["9:00 - 10:00", "10:00 - 11:00" , "11:15 - 12:15" , "12:15 - 13:15", "13:15 - 14:15" , "14:15 - 15:15" , "15:15 - 16:15", "16:15 - 17:15"];
   var list2 =["9:00", "10:00 " , "11:15 " , "12:15", "13:15 " , "14:15 " , "15:15 ", "16:15 "];
-  var list3 =["Applied Mathematics", "Applied Chemistry" , "Computer Programming" , "BREAK", "BREAK" , "BEE" , "CPP LAB", "CPP LAB"];
+  var list3 =["BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK" , "BREAK" , "BREAK", "BREAK"];
 
 
   @override
@@ -247,22 +247,22 @@ class _TuesdayState extends State<Tuesday> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) {
                         switch (list3[widget.index]) {
                           case 'Applied Mathematics':
-                            return cardTues();
+                            return TeachercardTues();
                             break;
                           case 'Applied Chemistry':
-                            return cardTues();
+                            return TeachercardTues();
                             break;
                           case 'BEE':
-                            return cardTues();
+                            return TeachercardTues();
                             break;
                           case 'Computer Programming':
-                            return cardTues();
+                            return TeachercardTues();
                             break;
                           case 'CPP LAB':
-                            return cardTues();
+                            return TeachercardTues();
                             break;
                           default:
-                            return cardTues();
+                            return TeachercardTues();
                         }
                       }));
                     },

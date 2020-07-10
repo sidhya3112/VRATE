@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:vrate/rating_phy/screens/review.dart';
 import '../dayselection.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -250,7 +251,7 @@ class _ThursdayState extends State<Thursday> {
                             return cardThurs();
                             break;
                           case 'Applied Physics':
-                            return cardThurs();
+                            return ReviewPhy();
                             break;
                           case 'Computer Programming':
                             return cardThurs();

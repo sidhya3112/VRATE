@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:vrate/main_timetable.dart';
 import '../models/reviewmodel.dart';
-import '../models/reviews_chem.dart';
+import '../models/reviews_phy.dart';
 import '../widgets/review.dart';
 import '../widgets/info_card.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Review extends StatefulWidget {
+class ReviewPhy extends StatefulWidget {
   @override
-  ReviewState createState() {
-    return new ReviewState();
+  ReviewPhyState createState() {
+    return new ReviewPhyState();
   }
 }
 
-class ReviewState extends State<Review> {
+class ReviewPhyState extends State<ReviewPhy> {
   final Reviews _reviewsStore = Reviews();
   final TextEditingController _commentController = TextEditingController();
   final List<int> _stars = [1, 2, 3, 4, 5];
@@ -35,7 +35,7 @@ class ReviewState extends State<Review> {
     double screenWidth = screenSize.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Feedback - Chemistry',
+        title: Text('Feedback - Physics',
         style: GoogleFonts.alice(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),),),
         backgroundColor: Colors.indigo[900],
       ),

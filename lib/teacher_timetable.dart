@@ -1,22 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'dayselection.dart';
+import 'package:vrate/teacher_dayselection.dart';
 import 'package:vrate/card/card_monday.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Timetable extends StatefulWidget {
-  Timetable({Key key, this.uid}) : super(key: key);
+class TeacherTimetable extends StatefulWidget {
+  TeacherTimetable({Key key, this.uid}) : super(key: key);
   //update the constructor to include the uid
   final String uid;
   @override
-  _TimetableState createState() => _TimetableState();
+  _TeacherTimetableState createState() => _TeacherTimetableState();
 }
 
-class _TimetableState extends State<Timetable> {
+class _TeacherTimetableState extends State<TeacherTimetable> {
   FirebaseUser currentUser;
   CalendarController _controller;
   @override
@@ -106,7 +106,7 @@ class _TimetableState extends State<Timetable> {
                                       renderDaysOfWeek: false,
                                       todayColor: Colors.orangeAccent,
                                       selectedColor:
-                                          Theme.of(context).primaryColor,
+                                      Theme.of(context).primaryColor,
                                       todayStyle: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18.0,
@@ -114,7 +114,7 @@ class _TimetableState extends State<Timetable> {
                                       )),
                                 ),
                                 new Positioned(
-                                    top: 55.0, child: DaySelection()),
+                                    top: 55.0, child: TeacherDaySelection()),
                               ],
                             ),
                           ],
@@ -124,7 +124,7 @@ class _TimetableState extends State<Timetable> {
                         mainAxisSize: MainAxisSize.min,
                         children: List.generate(
                           8,
-                          (index) => Monday(
+                              (index) => Monday(
                             index: index,
                           ),
                         ),
@@ -196,12 +196,12 @@ class lineGen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: List.generate(
           4,
-          (index) => Container(
-                height: 2.0,
-                width: lines[index],
-                color: Color(0xffd0d2d8),
-                margin: EdgeInsets.symmetric(vertical: 14.0),
-              )),
+              (index) => Container(
+            height: 2.0,
+            width: lines[index],
+            color: Color(0xffd0d2d8),
+            margin: EdgeInsets.symmetric(vertical: 14.0),
+          )),
     );
   }
 }
@@ -231,10 +231,10 @@ class _dateWidgetState extends State<dateWidget> {
         decoration: _selectDate
             ? null
             : BoxDecoration(
-                color: _selectDate ? Colors.white : Colors.redAccent,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(4.0),
-                )),
+            color: _selectDate ? Colors.white : Colors.redAccent,
+            borderRadius: BorderRadius.all(
+              Radius.circular(4.0),
+            )),
         child: Column(
           children: <Widget>[
             Text(

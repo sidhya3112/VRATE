@@ -6,6 +6,7 @@ import 'package:vrate/card/card_thursday.dart';
 import 'package:vrate/card/card_friday.dart';
 import 'package:vrate/card/card_saturday.dart';
 
+
 class DaySelection extends StatefulWidget {
   final index;
 

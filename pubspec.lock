@@ -15,6 +15,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.39.12"
+<<<<<<< HEAD
   archive:
     dependency: transitive
     description:
@@ -22,6 +23,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.13"
+=======
+>>>>>>> 713d8e9... VRATE
   args:
     dependency: transitive
     description:
@@ -35,7 +38,11 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.4.1"
+=======
+    version: "2.4.2"
+>>>>>>> 713d8e9... VRATE
   boolean_selector:
     dependency: transitive
     description:
@@ -99,6 +106,16 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.1.0"
+<<<<<<< HEAD
+=======
+  characters:
+    dependency: transitive
+    description:
+      name: characters
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+>>>>>>> 713d8e9... VRATE
   charcode:
     dependency: transitive
     description:
@@ -113,6 +130,16 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+<<<<<<< HEAD
+=======
+  clock:
+    dependency: transitive
+    description:
+      name: clock
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
+>>>>>>> 713d8e9... VRATE
   cloud_firestore:
     dependency: "direct dev"
     description:
@@ -147,7 +174,11 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.14.12"
+=======
+    version: "1.14.13"
+>>>>>>> 713d8e9... VRATE
   convert:
     dependency: transitive
     description:
@@ -190,6 +221,16 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+<<<<<<< HEAD
+=======
+  fake_async:
+    dependency: transitive
+    description:
+      name: fake_async
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+>>>>>>> 713d8e9... VRATE
   file:
     dependency: transitive
     description:
@@ -331,6 +372,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.1"
+<<<<<<< HEAD
   image:
     dependency: transitive
     description:
@@ -338,6 +380,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.12"
+=======
+>>>>>>> 713d8e9... VRATE
   intl:
     dependency: "direct main"
     description:
@@ -393,7 +437,11 @@ packages:
       name: matcher
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.12.6"
+=======
+    version: "0.12.8"
+>>>>>>> 713d8e9... VRATE
   meta:
     dependency: transitive
     description:
@@ -463,7 +511,11 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.6.4"
+=======
+    version: "1.7.0"
+>>>>>>> 713d8e9... VRATE
   path_provider:
     dependency: transitive
     description:
@@ -499,6 +551,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.0"
+<<<<<<< HEAD
   petitparser:
     dependency: transitive
     description:
@@ -506,6 +559,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0"
+=======
+>>>>>>> 713d8e9... VRATE
   platform:
     dependency: transitive
     description:
@@ -657,7 +712,11 @@ packages:
       name: stack_trace
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.9.3"
+=======
+    version: "1.9.5"
+>>>>>>> 713d8e9... VRATE
   stream_channel:
     dependency: transitive
     description:
@@ -699,7 +758,11 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.2.15"
+=======
+    version: "0.2.17"
+>>>>>>> 713d8e9... VRATE
   timeago:
     dependency: "direct main"
     description:
@@ -720,7 +783,11 @@ packages:
       name: typed_data
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.1.6"
+=======
+    version: "1.2.0"
+>>>>>>> 713d8e9... VRATE
   vector_math:
     dependency: transitive
     description:
@@ -749,6 +816,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.0"
+<<<<<<< HEAD
   xml:
     dependency: transitive
     description:
@@ -756,6 +824,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.6.1"
+=======
+>>>>>>> 713d8e9... VRATE
   yaml:
     dependency: transitive
     description:
@@ -764,5 +834,9 @@ packages:
     source: hosted
     version: "2.2.1"
 sdks:
+<<<<<<< HEAD
   dart: ">=2.8.0 <3.0.0"
+=======
+  dart: ">=2.9.0-14.0.dev <3.0.0"
+>>>>>>> 713d8e9... VRATE
   flutter: ">=1.17.0 <2.0.0"

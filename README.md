@@ -2,8 +2,8 @@
 
 ## Team name: WHO(We help others)
 ## Team Members:
-1. Ananya Pawar - ananyapawar23@gmail.com
-2. Sidhya Jain - sidhyajain@gmail.com
+1. Ananya Pawar - [@ananya-2311](https://www.github.com/ananya-2311)
+2. Sidhya Jain - [@sidhya3112](https://www.github.com/sidhya3112)
 
 ## Mentors:
 * Shubhankar Gupta
